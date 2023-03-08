@@ -55,7 +55,10 @@ func (x excelWorker) WriteToXlsx(ef *ExcelFile) error {
 
 	f := excelize.NewFile()
 	sheetName := "Sheet1"
-	index := f.NewSheet(sheetName)
+	index, err := f.NewSheet(sheetName)
+	if err != nil {
+		return err
+	}
 	f.SetActiveSheet(index)
 	data := ef.data
 	for i := 0; i < len(data); i++ {
