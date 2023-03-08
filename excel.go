@@ -102,7 +102,6 @@ func (x excelWorker) ReadXls(fileName string) ([][]string, error) {
 func (x excelWorker) ReadXlsx(fileName string) ([][]string, error) {
 	f, err := excelize.OpenFile(fileName, excelize.Options{})
 	if err != nil {
-		f.Close()
 		return [][]string{}, err
 	}
 	defer f.Close()
